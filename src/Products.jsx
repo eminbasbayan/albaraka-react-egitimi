@@ -10,6 +10,7 @@ function Products() {
       <div className="products-wrapper">
         {productsData.map((product) => (
           <ProductCard
+            key={product.id}
             image={product.image}
             title={product.title}
             price={product.price}
