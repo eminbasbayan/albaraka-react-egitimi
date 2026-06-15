@@ -1,15 +1,19 @@
 import './ProductCard.css';
 
-function ProductCard() {
+function ProductCard(props) {
+
+  console.log(props);
+  
+
   return (
     <div className="product-card">
       <img
         className="product-image"
-        src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png"
+        src={props.image}
       />
       <div className="product-info">
-        <b className="product-title">Çanta</b>
-        <span className="product-price">200₺</span>
+        <b className="product-title">{props.title}</b>
+        <span className="product-price">{props.price}₺</span>
       </div>
     </div>
   );
