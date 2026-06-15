@@ -1,17 +1,9 @@
-import ProductCard from "./ProductCard";
+import Products from './Products';
 
 function App() {
- 
-
   return (
     <div>
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
+      <Products />
     </div>
   );
 }

@@ -1,0 +1,18 @@
+import ProductCard from './ProductCard';
+import "./Products.css";
+
+function Products() {
+  return (
+    <div className="products-container">
+      <h2>Products Component</h2>
+
+      <div className="products-wrapper">
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+      </div>
+    </div>
+  );
+}
+
+export default Products;
