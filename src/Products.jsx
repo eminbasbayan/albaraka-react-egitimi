@@ -1,17 +1,20 @@
 import ProductCard from './ProductCard';
+import { productsData } from './data/productsData';
 import './Products.css';
 
 function Products() {
-  const image = 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png';
-  const title = 'Çanta';
-  const price = 200;
-
   return (
     <div className="products-container">
       <h2>Products Component</h2>
 
       <div className="products-wrapper">
-        <ProductCard image={image} title={title} price={price} />
+        {productsData.map((product) => (
+          <ProductCard
+            image={product.image}
+            title={product.title}
+            price={product.price}
+          />
+        ))}
       </div>
     </div>
   );
