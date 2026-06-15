@@ -12,6 +12,7 @@ function ProductCard(props) {
         src={props.image}
       />
       <div className="product-info">
+        <span className="product-category">{props.category}</span>
         <b className="product-title">{props.title}</b>
         <span className="product-price">{props.price}₺</span>
       </div>

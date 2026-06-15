@@ -14,6 +14,7 @@ function Products() {
             image={product.image}
             title={product.title}
             price={product.price}
+            category={product.category}
           />
         ))}
       </div>
