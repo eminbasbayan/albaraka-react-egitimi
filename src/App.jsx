@@ -4,12 +4,13 @@ import Button from './components/UI/Button';
 function App() {
   return (
     <div>
-      <Button title="Ürün Ekle" size="lg" color="primary" />
-      <Button title="Ürün Ekle" size="lg" />
-      <br />
+      <Button>
+        <b>Ürün Ekle</b>
+        <b>Ürün Ekle</b>
+        <b>Ürün Ekle</b>
+      </Button>
       <br />
 
-      <Button title="Ürün Sil" size="sm" color="danger" />
       <Products />
     </div>
   );
