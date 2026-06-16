@@ -3,25 +3,18 @@ import Button from '../UI/Button';
 import { useState } from 'react';
 
 const AddProductForm = () => {
-  const [title, setTitle] = useState('');
-  const [image, setImage] = useState('');
-  const [price, setPrice] = useState('');
-  const [category, setCategory] = useState('');
+  const [productInputData, setProductInputData] = useState({
+    title: '',
+    image: '',
+    price: 0,
+    category: '',
+  });
 
-  function handleTitleChange(event) {
-    setTitle(event.target.value);
-  }
-
-  function handleImageChange(event) {
-    setImage(event.target.value);
-  }
-
-  function handlePriceChange(event) {
-    setPrice(event.target.value);
-  }
-
-  function handleCategoryChange(event) {
-    setCategory(event.target.value);
+  function handleChange({ target: { value, name } }) {
+    setProductInputData({
+      ...productInputData,
+      [name]: value,
+    });
   }
 
   return (
@@ -29,42 +22,50 @@ const AddProductForm = () => {
       <h2 className="form-title">Yeni Ürün Ekle</h2>
 
       <label className="form-field">
-        <span className="field-label">Title: {title}</span>
+        <span className="field-label">Title: {productInputData.title}</span>
         <input
           type="text"
           className="form-input"
           placeholder="Bir ürün ismi giriniz."
-          onChange={handleTitleChange}
+          onChange={handleChange}
+          name="title"
         />
       </label>
 
       <label className="form-field">
-        <span className="field-label">Image URL: {image} </span>
+        <span className="field-label">
+          Image URL: {productInputData.image}{' '}
+        </span>
         <input
           type="text"
           className="form-input"
           placeholder="Bir ürün görsel linki giriniz."
-          onChange={handleImageChange}
+          onChange={handleChange}
+          name="image"
         />
       </label>
 
       <label className="form-field">
-        <span className="field-label">Price: {price}</span>
+        <span className="field-label">Price: {productInputData.price}</span>
         <input
-          type="text"
+          type="number"
           className="form-input"
           placeholder="Bir ürün fiyatı giriniz."
-          onChange={handlePriceChange}
+          onChange={handleChange}
+          name="price"
         />
       </label>
 
       <label className="form-field">
-        <span className="field-label">Category: {category} </span>
+        <span className="field-label">
+          Category: {productInputData.category}{' '}
+        </span>
         <input
           type="text"
           className="form-input"
           placeholder="Bir ürün kategorisi giriniz."
-          onChange={handleCategoryChange}
+          onChange={handleChange}
+          name="category"
         />
       </label>
 
