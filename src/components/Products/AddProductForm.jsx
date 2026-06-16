@@ -48,6 +48,14 @@ const AddProductForm = (props) => {
   function handleSubmit(event) {
     event.preventDefault();
 
+    const isFormValid = Object.values(productInputData).every(
+      (value) => value.trim() !== '',
+    );
+
+    if (!isFormValid) {
+      return alert('Input boş geçilemez');
+    }
+
     props.handleAddProduct({ id: Math.random(), ...productInputData });
     setProductInputData({
       title: '',
