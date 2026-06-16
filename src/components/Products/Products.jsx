@@ -6,11 +6,21 @@ import AddProductForm from './AddProductForm';
 import Modal from '../UI/Modal';
 
 function Products() {
-  const [products, setProducts] = useState(productsData);
+  const [products, setProducts] = useState([]);
   const [isShowModal, setIsShowModal] = useState(false);
 
   function handleAddProduct(newProduct) {
     setProducts([newProduct, ...products]);
+  }
+
+  async function fetchProducts() {
+    try {
+      const res = await fetch('https://fakestoreapi.com/products');
+      const data = await res.json();
+      setProducts(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -22,6 +32,7 @@ function Products() {
         handleAddProduct={handleAddProduct}
         setIsShowModal={setIsShowModal}
       />
+      <button onClick={fetchProducts}>Ürünleri Getir</button>
       <div className="products-wrapper">
         {products.map((product) => (
           <ProductCard
