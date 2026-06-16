@@ -7,20 +7,23 @@ const Modal = ({
   onClose,
 }) => {
   return createPortal(
-    <div className="modal">
-      <div className="modal-header">
-        <h3>{title}</h3>
-      </div>
-      <div className="modal-content">
-        <p>{description}</p>
-      </div>
-      <div className="modal-actions">
-        <button className="btn-secondary" onClick={onClose}>
-          İptal
-        </button>
-        <button className="btn-primary" onClick={onClose}>
-          Tamam
-        </button>
+    <div className="modal-container">
+      <div className="modal-overlay" onClick={onClose}></div>
+      <div className="modal">
+        <div className="modal-header">
+          <h3>{title}</h3>
+        </div>
+        <div className="modal-content">
+          <p>{description}</p>
+        </div>
+        <div className="modal-actions">
+          <button className="btn-secondary" onClick={onClose}>
+            İptal
+          </button>
+          <button className="btn-primary" onClick={onClose}>
+            Tamam
+          </button>
+        </div>
       </div>
     </div>,
     document.getElementById('portal'),
