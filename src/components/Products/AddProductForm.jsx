@@ -49,6 +49,12 @@ const AddProductForm = (props) => {
     event.preventDefault();
 
     props.handleAddProduct({ id: Math.random(), ...productInputData });
+    setProductInputData({
+      title: '',
+      image: '',
+      price: 0,
+      category: '',
+    });
   }
 
   return (
@@ -59,6 +65,7 @@ const AddProductForm = (props) => {
         <ProductInput
           key={input.name}
           onChange={handleChange}
+          value={productInputData[input.name]}
           {...input}
         />
       ))}
