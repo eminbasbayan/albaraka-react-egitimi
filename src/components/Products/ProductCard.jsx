@@ -1,10 +1,16 @@
+import Button from '../UI/Button';
 import './ProductCard.css';
 
 function ProductCard(props) {
+  function deleteProduct() {
+    /*     const filteredProducts = props.products.filter(
+      (item) => item.id !== props.id,
+    );
+    props.setProducts(filteredProducts); */
 
-
-  function handleClick() {
-    props.setTitleState('Title Değişti!');
+    props.setProducts((products) =>
+      products.filter((item) => item.id !== props.id),
+    );
   }
 
   return (
@@ -12,9 +18,11 @@ function ProductCard(props) {
       <img className="product-image" src={props.image} />
       <div className="product-info">
         <span className="product-category">{props.category}</span>
-        <b className="product-title">{props.titleState}</b>
+        <b className="product-title">{props.title}</b>
         <span className="product-price">{props.price}₺</span>
-        <button onClick={handleClick}>Title Değiştir</button>
+        <Button color="danger" size="lg" onClick={deleteProduct}>
+          Ürünü Sil
+        </Button>
       </div>
     </div>
   );

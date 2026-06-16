@@ -6,7 +6,6 @@ import AddProductForm from './AddProductForm';
 
 function Products() {
   const [products, setProducts] = useState(productsData);
-  const [titleState, setTitleState] = useState('Title');
 
   function handleAddProduct(newProduct) {
     setProducts([newProduct, ...products]);
@@ -24,12 +23,12 @@ function Products() {
         {products.map((product) => (
           <ProductCard
             key={product.id}
+            id={product.id}
             image={product.image}
             title={product.title}
             price={product.price}
             category={product.category}
-            titleState={titleState}
-            setTitleState={setTitleState}
+            setProducts={setProducts}
           />
         ))}
       </div>
