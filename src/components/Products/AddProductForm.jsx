@@ -2,7 +2,7 @@ import './AddProductForm.css'; // CSS dosyasını içe aktarıyoruz
 import Button from '../UI/Button';
 import { useState } from 'react';
 
-const AddProductForm = () => {
+const AddProductForm = (props) => {
   const [productInputData, setProductInputData] = useState({
     title: '',
     image: '',
@@ -17,8 +17,14 @@ const AddProductForm = () => {
     });
   }
 
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    props.handleAddProduct({ id: Math.random(), ...productInputData });
+  }
+
   return (
-    <form className="product-form">
+    <form className="product-form" onSubmit={handleSubmit}>
       <h2 className="form-title">Yeni Ürün Ekle</h2>
 
       <label className="form-field">
