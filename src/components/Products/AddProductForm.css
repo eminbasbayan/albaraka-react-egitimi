@@ -1,0 +1,84 @@
+/* Form Genel Kutusu */
+.product-form {
+  max-width: 450px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Form Başlığı */
+.form-title {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* Her Bir Giriş Alanının (Label) Yapısı */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 1.25rem;
+  cursor: pointer;
+}
+
+/* Label İçindeki Metin */
+.field-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+/* Input Alanları */
+.form-input {
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  outline: none;
+  background-color: #f8fafc;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Input Odaklandığında (Focus) Alacağı Stil */
+.form-input:focus {
+  border-color: #3b82f6;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* Placeholder (İpucu Metni) Stili */
+.form-input::placeholder {
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+
+/* Gönder Butonu */
+.form-submit-btn {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  background-color: #3b82f6;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Butonun Üzerine Gelindiğinde (Hover) */
+.form-submit-btn:hover {
+  background-color: #2563eb;
+}
+
+/* Butona Tıklandığında (Active) */
+.form-submit-btn:active {
+  transform: scale(0.98);
+}
