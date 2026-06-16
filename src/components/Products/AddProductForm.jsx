@@ -1,6 +1,34 @@
 import './AddProductForm.css'; // CSS dosyasını içe aktarıyoruz
 import Button from '../UI/Button';
 import { useState } from 'react';
+import ProductInput from './ProductInput';
+
+const productInputs = [
+  {
+    label: 'Title',
+    type: 'text',
+    placeholder: 'Bir ürün ismi giriniz.',
+    name: 'title',
+  },
+  {
+    label: 'Image URL',
+    type: 'text',
+    placeholder: 'Bir ürün görsel linki giriniz.',
+    name: 'image',
+  },
+  {
+    label: 'Price',
+    type: 'number',
+    placeholder: 'Bir ürün fiyatı giriniz.',
+    name: 'price',
+  },
+  {
+    label: 'Category',
+    type: 'text',
+    placeholder: 'Bir ürün kategorisi giriniz.',
+    name: 'category',
+  },
+];
 
 const AddProductForm = (props) => {
   const [productInputData, setProductInputData] = useState({
@@ -27,53 +55,13 @@ const AddProductForm = (props) => {
     <form className="product-form" onSubmit={handleSubmit}>
       <h2 className="form-title">Yeni Ürün Ekle</h2>
 
-      <label className="form-field">
-        <span className="field-label">Title: {productInputData.title}</span>
-        <input
-          type="text"
-          className="form-input"
-          placeholder="Bir ürün ismi giriniz."
+      {productInputs.map((input) => (
+        <ProductInput
+          key={input.name}
           onChange={handleChange}
-          name="title"
+          {...input}
         />
-      </label>
-
-      <label className="form-field">
-        <span className="field-label">
-          Image URL: {productInputData.image}{' '}
-        </span>
-        <input
-          type="text"
-          className="form-input"
-          placeholder="Bir ürün görsel linki giriniz."
-          onChange={handleChange}
-          name="image"
-        />
-      </label>
-
-      <label className="form-field">
-        <span className="field-label">Price: {productInputData.price}</span>
-        <input
-          type="number"
-          className="form-input"
-          placeholder="Bir ürün fiyatı giriniz."
-          onChange={handleChange}
-          name="price"
-        />
-      </label>
-
-      <label className="form-field">
-        <span className="field-label">
-          Category: {productInputData.category}{' '}
-        </span>
-        <input
-          type="text"
-          className="form-input"
-          placeholder="Bir ürün kategorisi giriniz."
-          onChange={handleChange}
-          name="category"
-        />
-      </label>
+      ))}
 
       <Button size="lg" full>
         Ürünü Kaydet
