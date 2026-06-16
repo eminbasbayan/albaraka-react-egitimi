@@ -53,7 +53,8 @@ const AddProductForm = (props) => {
     );
 
     if (!isFormValid) {
-      return alert('Input boş geçilemez');
+      props.setIsShowModal(true);
+      return;
     }
 
     props.handleAddProduct({ id: Math.random(), ...productInputData });

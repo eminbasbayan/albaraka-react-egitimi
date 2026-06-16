@@ -11,6 +11,10 @@
   overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   animation: modalFadeIn 0.3s ease-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(50%, 50%);
 }
 
 /* Header Alanı */
