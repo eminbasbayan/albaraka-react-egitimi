@@ -4,7 +4,7 @@
 
 .product-title {
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* Maksimum satır sayısı */
+  -webkit-line-clamp: 1; /* Maksimum satır sayısı */
   -webkit-box-orient: vertical;
   overflow: hidden; /* Taşan metni gizler */
   font-size: 18px;
