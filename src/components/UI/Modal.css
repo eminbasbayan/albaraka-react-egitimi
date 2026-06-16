@@ -1,0 +1,91 @@
+/* Modal Kartı Stilleri */
+.modal {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 500px;
+  margin: 2rem auto; /* Sayfa ortasında durması için geçici çözüm */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+/* Header Alanı */
+.modal-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+/* İçerik Alanı */
+.modal-content {
+  padding: 24px;
+  color: #4a4a4a;
+  font-size: 1rem;
+  line-height: 1.5;
+  max-height: 60vh; /* Çok uzun içeriklerde sayfanın patlamaması için */
+  overflow-y: auto;
+}
+
+/* Aksiyon Butonları Alanı */
+.modal-actions {
+  padding: 16px 24px;
+  border-top: 1px solid #eaeaea;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  background-color: #f9f9f9;
+}
+
+/* Örnek Buton Stilleri */
+.modal-actions button {
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.btn-secondary {
+  background-color: #f1f3f5;
+  color: #495057;
+}
+
+.btn-secondary:hover {
+  background-color: #e9ecef;
+}
+
+.btn-primary {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #2563eb;
+}
+
+/* Giriş Animasyonu */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
