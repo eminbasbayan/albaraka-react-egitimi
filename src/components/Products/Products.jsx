@@ -1,5 +1,5 @@
 import ProductCard from './ProductCard';
-import { productsData } from './data/productsData';
+import { productsData } from '../../data/productsData';
 import './Products.css';
 import { useState } from 'react';
 
