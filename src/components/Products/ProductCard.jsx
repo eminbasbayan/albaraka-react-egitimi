@@ -7,9 +7,6 @@ function ProductCard(props) {
     props.setTitleState('Title Değişti!');
   }
 
-  console.log("component re-render!");
-  
-
   return (
     <div className="product-card">
       <img className="product-image" src={props.image} />
