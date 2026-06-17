@@ -1,5 +1,5 @@
 import Products from '../components/Products/Products';
-import Header from '../layout/Header';
+import Header from '../components/layout/Header';
 
 const ProductsPage = () => {
   return (

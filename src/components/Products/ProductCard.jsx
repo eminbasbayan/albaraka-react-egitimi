@@ -18,9 +18,14 @@ function ProductCard(props) {
         <span className="product-category">{props.category}</span>
         <b className="product-title">{props.title}</b>
         <span className="product-price">{props.price}₺</span>
-        <Button color="danger" size="lg" onClick={deleteProduct}>
-          Ürünü Sil
-        </Button>
+        <div className="flex flex-col gap-2">
+          <Button size="lg" onClick={() => {}}>
+            Sepete Ekle
+          </Button>
+          <Button color="danger" size="lg" onClick={deleteProduct}>
+            Ürünü Sil
+          </Button>
+        </div>
       </div>
     </div>
   );
