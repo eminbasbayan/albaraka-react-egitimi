@@ -1,19 +1,20 @@
-import { useContext } from 'react';
 import './Button.css';
-import { CartContext } from '../../context/CartContext';
 
-function Button({ size, color = 'primary', children, full, onClick }) {
-  const { fullName: tumIsim, adres } = useContext(CartContext);
-
-  const fullName = 'Emre Demir';
-
-
+function Button({
+  size,
+  color = 'primary',
+  children,
+  full,
+  onClick,
+  disabled,
+}) {
   return (
     <button
-      className={`btn btn-${size} btn-${color} ${full && 'full-size'}`}
+      className={`btn btn-${size} btn-${color} ${full && 'full-size'} disabled:opacity-25`}
       onClick={onClick}
+      disabled={disabled}
     >
-      {tumIsim}
+      {children}
     </button>
   );
 }

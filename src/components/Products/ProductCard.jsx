@@ -1,15 +1,22 @@
+import { useContext } from 'react';
 import Button from '../UI/Button';
 import './ProductCard.css';
+import { CartContext } from '../../context/CartContext';
 
 function ProductCard(props) {
+  const { cartItems, addToCart } = useContext(CartContext);
+  const { setProducts, ...product } = props;
+
   function deleteProduct() {
     /*     const filteredProducts = props.products.filter(
       (item) => item.id !== props.id,
     );
     props.setProducts(filteredProducts); */
 
-    props.setProducts(props.id);
+    setProducts(props.id);
   }
+
+  const findCartItem = cartItems.find((item) => item.id === props.id);
 
   return (
     <div className="product-card">
@@ -19,7 +26,11 @@ function ProductCard(props) {
         <b className="product-title">{props.title}</b>
         <span className="product-price">{props.price}₺</span>
         <div className="flex flex-col gap-2">
-          <Button size="lg" onClick={() => {}}>
+          <Button
+            size="lg"
+            onClick={() => addToCart(product)}
+            disabled={findCartItem}
+          >
             Sepete Ekle
           </Button>
           <Button color="danger" size="lg" onClick={deleteProduct}>
