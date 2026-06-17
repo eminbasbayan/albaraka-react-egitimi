@@ -26,16 +26,24 @@ function ProductCard(props) {
         <b className="product-title">{props.title}</b>
         <span className="product-price">{props.price}₺</span>
         <div className="flex flex-col gap-2">
-          <Button
-            size="lg"
-            onClick={() => addToCart(product)}
-            disabled={findCartItem}
-          >
-            Sepete Ekle
-          </Button>
-          <Button color="danger" size="lg" onClick={deleteProduct}>
-            Ürünü Sil
-          </Button>
+          {props.cart ? (
+            <Button size="lg" onClick={() => {}} color="danger">
+              Sepetten Sil
+            </Button>
+          ) : (
+            <>
+              <Button
+                size="lg"
+                onClick={() => addToCart(product)}
+                disabled={findCartItem}
+              >
+                Sepete Ekle
+              </Button>
+              <Button color="danger" size="lg" onClick={deleteProduct}>
+                Ürünü Sil
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </div>
