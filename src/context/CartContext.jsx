@@ -9,10 +9,12 @@ function CartProvider({ children }) {
       : [],
   );
 
-  console.log(cartItems);
-
   function addToCart(product) {
     setCartItems((prev) => [...prev, product]);
+  }
+
+  function removeFromCart(cartItemId) {
+    setCartItems((prev) => prev.filter((item) => item.id !== cartItemId));
   }
 
   useEffect(() => {
@@ -24,6 +26,7 @@ function CartProvider({ children }) {
       value={{
         cartItems,
         addToCart,
+        removeFromCart
       }}
     >
       {children}

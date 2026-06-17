@@ -4,7 +4,7 @@ import './ProductCard.css';
 import { CartContext } from '../../context/CartContext';
 
 function ProductCard(props) {
-  const { cartItems, addToCart } = useContext(CartContext);
+  const { cartItems, addToCart, removeFromCart } = useContext(CartContext);
   const { setProducts, ...product } = props;
 
   function deleteProduct() {
@@ -27,7 +27,11 @@ function ProductCard(props) {
         <span className="product-price">{props.price}₺</span>
         <div className="flex flex-col gap-2">
           {props.cart ? (
-            <Button size="lg" onClick={() => {}} color="danger">
+            <Button
+              size="lg"
+              onClick={() => removeFromCart(props.id)}
+              color="danger"
+            >
               Sepetten Sil
             </Button>
           ) : (
