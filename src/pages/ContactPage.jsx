@@ -1,13 +1,44 @@
-import Header from '../components/Layout/Header'
-
 const ContactPage = () => {
   return (
-    <div>
-         <Header />
-        <h1>ContactPage</h1>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt quae beatae adipisci accusantium voluptatem quis eius earum nisi, neque veniam ut voluptatum non amet fuga perspiciatis numquam iusto esse eos iste. Fuga sint quam ut debitis porro voluptatem pariatur veniam, quis a iusto? Est maxime nemo nostrum a ipsum eligendi nisi corrupti dignissimos eum, animi nesciunt delectus tempora sequi harum. Omnis perspiciatis aspernatur harum beatae eaque placeat, nisi aut. Commodi facere earum asperiores? Eaque, fugit quas excepturi unde architecto sequi veniam repudiandae beatae similique quasi aut sit pariatur, doloremque voluptate debitis facilis voluptas? Ipsum soluta nisi dolore, ab minus laborum magnam illo. Quibusdam id cum facilis laborum consequuntur facere deleniti sequi iste magni porro sit exercitationem officiis commodi voluptatibus, molestias, autem reiciendis omnis velit modi quod excepturi. Pariatur nihil quos maiores perferendis perspiciatis ducimus dolores modi porro officia repellat rem adipisci accusamus, accusantium expedita consequatur? Id nemo, tempora veniam iste eligendi est, maxime soluta, rerum provident unde totam blanditiis magni optio doloremque nisi minus quam ex esse molestiae dignissimos? Autem fugiat necessitatibus, architecto nulla iusto obcaecati sit, impedit dolorem cum cupiditate voluptates veritatis similique omnis explicabo dolore harum alias ducimus nobis dolor ratione ea? Natus, maxime quia! Similique necessitatibus ipsa provident praesentium modi deserunt impedit iste nostrum. Quisquam nihil similique quidem iusto ea eveniet nemo aut suscipit cupiditate neque dicta officia facere libero et pariatur expedita, molestias eos, eaque fugiat exercitationem aspernatur quis unde? Cum excepturi illum perferendis voluptatibus possimus cumque nobis quo, aspernatur unde sint earum repellendus explicabo voluptates assumenda mollitia expedita blanditiis provident delectus rerum. Porro dolor, nobis aspernatur ad cum rem nulla et sit numquam. Ipsum voluptas eius optio libero rerum laborum tempore odit, molestiae rem, sit nulla possimus nam assumenda! Unde laborum mollitia facere? Laborum fugiat doloremque amet blanditiis ipsa unde distinctio odit omnis molestiae alias.</p>
+    <div className="contact-page">
+      <h1>ContactPage</h1>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt quae
+        beatae adipisci accusantium voluptatem quis eius earum nisi, neque
+        veniam ut voluptatum non amet fuga perspiciatis numquam iusto esse eos
+        iste. Fuga sint quam ut debitis porro voluptatem pariatur veniam, quis a
+        iusto? Est maxime nemo nostrum a ipsum eligendi nisi corrupti
+        dignissimos eum, animi nesciunt delectus tempora sequi harum. Omnis
+        perspiciatis aspernatur harum beatae eaque placeat, nisi aut. Commodi
+        facere earum asperiores? Eaque, fugit quas excepturi unde architecto
+        sequi veniam repudiandae beatae similique quasi aut sit pariatur,
+        doloremque voluptate debitis facilis voluptas? Ipsum soluta nisi dolore,
+        ab minus laborum magnam illo. Quibusdam id cum facilis laborum
+        consequuntur facere deleniti sequi iste magni porro sit exercitationem
+        officiis commodi voluptatibus, molestias, autem reiciendis omnis velit
+        modi quod excepturi. Pariatur nihil quos maiores perferendis
+        perspiciatis ducimus dolores modi porro officia repellat rem adipisci
+        accusamus, accusantium expedita consequatur? Id nemo, tempora veniam
+        iste eligendi est, maxime soluta, rerum provident unde totam blanditiis
+        magni optio doloremque nisi minus quam ex esse molestiae dignissimos?
+        Autem fugiat necessitatibus, architecto nulla iusto obcaecati sit,
+        impedit dolorem cum cupiditate voluptates veritatis similique omnis
+        explicabo dolore harum alias ducimus nobis dolor ratione ea? Natus,
+        maxime quia! Similique necessitatibus ipsa provident praesentium modi
+        deserunt impedit iste nostrum. Quisquam nihil similique quidem iusto ea
+        eveniet nemo aut suscipit cupiditate neque dicta officia facere libero
+        et pariatur expedita, molestias eos, eaque fugiat exercitationem
+        aspernatur quis unde? Cum excepturi illum perferendis voluptatibus
+        possimus cumque nobis quo, aspernatur unde sint earum repellendus
+        explicabo voluptates assumenda mollitia expedita blanditiis provident
+        delectus rerum. Porro dolor, nobis aspernatur ad cum rem nulla et sit
+        numquam. Ipsum voluptas eius optio libero rerum laborum tempore odit,
+        molestiae rem, sit nulla possimus nam assumenda! Unde laborum mollitia
+        facere? Laborum fugiat doloremque amet blanditiis ipsa unde distinctio
+        odit omnis molestiae alias.
+      </p>
     </div>
-  )
-}
+  );
+};
 
-export default ContactPage
+export default ContactPage;
