@@ -8,9 +8,7 @@ function ProductCard(props) {
     );
     props.setProducts(filteredProducts); */
 
-    props.setProducts((products) =>
-      products.filter((item) => item.id !== props.id),
-    );
+    props.setProducts(props.id);
   }
 
   return (

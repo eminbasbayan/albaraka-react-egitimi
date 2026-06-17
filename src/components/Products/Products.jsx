@@ -1,31 +1,28 @@
 import ProductCard from './ProductCard';
 import { productsData } from '../../data/productsData';
 import './Products.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer } from 'react';
 import AddProductForm from './AddProductForm';
 import Modal from '../UI/Modal';
+import { initialState, reducerFunc } from './productReducer';
 
 function Products() {
-  const [products, setProducts] = useState([]);
-  const [isShowModal, setIsShowModal] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [state, dispatch] = useReducer(reducerFunc, initialState);
 
   function handleAddProduct(newProduct) {
-    setProducts([newProduct, ...products]);
+    dispatch({ type: 'ADD_NEW_PRODUCT', newProduct });
   }
 
   async function fetchProducts() {
-    setIsLoading(true);
+    dispatch({ type: 'LOADING', show: true });
     try {
       const res = await fetch('https://fakestoreapi.com/products');
       const data = await res.json();
-      setProducts(data);
+      dispatch({ type: 'GET_PRODUCTS', products: data });
     } catch (error) {
-      setErrorMessage(error);
       console.log(error);
     } finally {
-      setIsLoading(false);
+      dispatch({ type: 'LOADING', show: false });
     }
   }
 
@@ -40,13 +37,12 @@ function Products() {
       <AddProductForm
         productsData={productsData}
         handleAddProduct={handleAddProduct}
-        setIsShowModal={setIsShowModal}
+        setIsShowModal={() => dispatch({ type: 'SHOW_MODAL' })}
       />
       <button onClick={fetchProducts}>Ürünleri Getir</button>
-      {isLoading && <b>Yükleniyor!!!</b>}
-      {errorMessage && <b>{errorMessage}</b>}
+      {state.isLoading && <b>Yükleniyor!!!</b>}
       <div className="products-wrapper">
-        {products.map((product) => (
+        {state.products.map((product) => (
           <ProductCard
             key={product.id}
             id={product.id}
@@ -54,16 +50,23 @@ function Products() {
             title={product.title}
             price={product.price}
             category={product.category}
-            setProducts={setProducts}
+            setProducts={(productId) =>
+              dispatch({
+                type: 'DELETE_PRODUCT',
+                products: state.products.filter(
+                  (product) => product.id !== productId,
+                ),
+              })
+            }
           />
         ))}
       </div>
 
-      {isShowModal && (
+      {state.isShowModal && (
         <Modal
           title="Inputlar boş geçilemez!"
           description="Lütfen tüm form elemanlarının dolu olduğundan emin olun!"
-          onClose={() => setIsShowModal(false)}
+          onClose={() => dispatch({ type: 'CLOSE_MODAL' })}
         />
       )}
     </div>
