@@ -1,7 +1,7 @@
 import ProductCard from './ProductCard';
 import { productsData } from '../../data/productsData';
 import './Products.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AddProductForm from './AddProductForm';
 import Modal from '../UI/Modal';
 
@@ -28,6 +28,10 @@ function Products() {
       setIsLoading(false);
     }
   }
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   return (
     <div className="products-container">
