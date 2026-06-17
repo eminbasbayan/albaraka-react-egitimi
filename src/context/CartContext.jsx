@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 export const CartContext = createContext();
 
@@ -11,10 +12,18 @@ function CartProvider({ children }) {
 
   function addToCart(product) {
     setCartItems((prev) => [...prev, product]);
+    toast('Ürün sepete eklendi', {
+      type: 'success',
+      position: 'bottom-right',
+    });
   }
 
   function removeFromCart(cartItemId) {
     setCartItems((prev) => prev.filter((item) => item.id !== cartItemId));
+    toast('Ürün sepetten silindi!', {
+      type: 'warning',
+      position: 'bottom-right',
+    });
   }
 
   useEffect(() => {
@@ -26,7 +35,7 @@ function CartProvider({ children }) {
       value={{
         cartItems,
         addToCart,
-        removeFromCart
+        removeFromCart,
       }}
     >
       {children}
