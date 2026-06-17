@@ -1,9 +1,9 @@
-import Products from '../components/Products/Products';
+import ProductsPage from '../pages/ProductsPage';
 
 const productRoutes = [
   {
     path: '/products',
-    Component: Products,
+    Component: ProductsPage,
   },
 ];
 
