@@ -1,10 +1,11 @@
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
 import { BsFillCartPlusFill } from 'react-icons/bs';
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 
 const Header = () => {
   const { cartItems } = useContext(CartContext);
+  const navigate = useNavigate();
 
   return (
     <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
@@ -60,7 +61,10 @@ const Header = () => {
 
           {/* Sağ Kısım: Masaüstü Giriş & Kayıt Butonları */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="flex items-center">
+            <button
+              className="flex items-center"
+              onClick={() => navigate('/cart')}
+            >
               <BsFillCartPlusFill size={28} className="cursor-pointer" />
               <b>{cartItems.length}</b>
             </button>
