@@ -24,8 +24,36 @@ const cartSlice = createSlice({
       );
       setLocalStorage(state.cartItems);
     },
+    miktarArttir: (state, action) => {
+      state.cartItems = state.cartItems.map((item) => {
+        if (item.id === action.payload) {
+          return { ...item, quantity: item.quantity + 1 };
+        }
+        return item;
+      });
+    },
+    miktarAzalt: (state, action) => {
+      const findCartItem = state.cartItems.find(
+        (item) => item.id === action.payload,
+      );
+
+      if (findCartItem.quantity === 1) {
+        state.cartItems = state.cartItems.filter(
+          (item) => item.id !== findCartItem.id,
+        );
+        return;
+      }
+
+      state.cartItems = state.cartItems.map((item) => {
+        if (item.id === action.payload) {
+          return { ...item, quantity: item.quantity - 1 };
+        }
+        return item;
+      });
+    },
   },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, miktarArttir, miktarAzalt } =
+  cartSlice.actions;
 export default cartSlice.reducer;

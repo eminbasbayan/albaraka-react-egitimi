@@ -1,6 +1,6 @@
 import Button from '../UI/Button';
 import { useNavigate } from 'react-router';
-import { addToCart, removeFromCart } from '../../redux/cartSlice';
+import { addToCart, miktarArttir, miktarAzalt, removeFromCart } from '../../redux/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import './ProductCard.css';
 
@@ -32,7 +32,18 @@ function ProductCard(props) {
         >
           {props.title}
         </b>
-        <span className="product-price">{props.price}₺</span>
+        <div className="flex justify-between">
+          <span className="product-price">{props.price}₺</span>
+          {props.cart && (
+            <div className="flex gap-2">
+              <button onClick={() => dispatch(miktarArttir(props.id))}>
+                +
+              </button>
+              <b>{product.quantity}</b>
+              <button onClick={() => dispatch(miktarAzalt(props.id))}>-</button>
+            </div>
+          )}
+        </div>
         <div className="flex flex-col gap-2">
           {props.cart ? (
             <Button
@@ -46,7 +57,7 @@ function ProductCard(props) {
             <>
               <Button
                 size="lg"
-                onClick={() => dispatch(addToCart(product))}
+                onClick={() => dispatch(addToCart({ ...product, quantity: 1 }))}
                 disabled={findCartItem}
               >
                 Sepete Ekle
