@@ -2,8 +2,14 @@ import ProductCard from '../components/Products/ProductCard';
 import { useSelector } from 'react-redux';
 
 const CartPage = () => {
-  /* const { cartItems } = useContext(CartContext); */
   const { cartItems } = useSelector((state) => state.cart);
+
+  const cartTotal = cartItems.reduce(
+    (previousValue, currentValue) =>
+      previousValue + currentValue.price * currentValue.quantity,
+    0,
+  );
+
   return (
     <div className="cart-page">
       <h1>Cart Page</h1>
@@ -15,6 +21,7 @@ const CartPage = () => {
           <ProductCard key={item.id} {...item} cart />
         ))}
       </div>
+      Sepet Toplam: {cartTotal.toFixed(2)}
     </div>
   );
 };
