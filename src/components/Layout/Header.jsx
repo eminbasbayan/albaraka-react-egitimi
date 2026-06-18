@@ -1,10 +1,12 @@
 import { Link, NavLink, useNavigate } from 'react-router';
 import { BsFillCartPlusFill } from 'react-icons/bs';
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
+import { AuthContext } from '../../context/AuthContext';
 
 const Header = () => {
   const { cartItems } = useContext(CartContext);
+  const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   return (
@@ -68,18 +70,32 @@ const Header = () => {
               <BsFillCartPlusFill size={28} className="cursor-pointer" />
               <b>{cartItems.length}</b>
             </button>
-            <a
-              href="#login"
-              className="text-gray-600 hover:text-indigo-600 font-medium transition-colors duration-200 text-sm lg:text-base"
-            >
-              Giriş Yap
-            </a>
-            <a
-              href="#signup"
-              className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200 text-sm lg:text-base shadow-sm hover:shadow"
-            >
-              Ücretsiz Başla
-            </a>
+            {user ? (
+              <>
+                <b>Hoşgeldin {user.username} </b>
+                <button
+                  onClick={logout}
+                  className="cursor-pointer bg-red-500 text-white p-2 rounded-lg"
+                >
+                  Çıkış Yap
+                </button>
+              </>
+            ) : (
+              <React.Fragment>
+                <Link
+                  to="/auth/login"
+                  className="text-gray-600 hover:text-indigo-600 font-medium transition-colors duration-200 text-sm lg:text-base"
+                >
+                  Giriş Yap
+                </Link>
+                <a
+                  href="#signup"
+                  className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200 text-sm lg:text-base shadow-sm hover:shadow"
+                >
+                  Ücretsiz Başla
+                </a>
+              </React.Fragment>
+            )}
           </div>
         </div>
       </div>

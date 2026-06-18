@@ -1,27 +1,54 @@
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router';
 
 const validationSchema = yup.object().shape({
   email: yup.string().required('Email boş geçilemez!').email(),
   password: yup
     .string()
     .required('Password boş geçilemez!')
-    .min(8, 'Şifre en az 8 karakterli olmalıdır!'),
+    .min(6, 'Şifre en az 6 karakterli olmalıdır!'),
 });
 
 export default function Login() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(validationSchema),
   });
+  const { setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  function onSubmit(data) {
-    console.log(data);
+  async function onSubmit(user) {
+    try {
+      const res = await fetch('https://fakestoreapi.com/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: 'mor_2314', password: '83r5^_' }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        toast.success('Giriş başarılı! Ana Sayfaya Yönlendiriliyorsunuz!');
+        setTimeout(() => {
+          setUser({
+            email: user.email,
+            username: 'eminbasbayan',
+            ...data,
+            role: 'user',
+          });
+          navigate('/');
+        }, 2000);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   /* console.log(watch('password')); */
