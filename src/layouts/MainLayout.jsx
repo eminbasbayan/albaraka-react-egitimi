@@ -1,3 +1,4 @@
+import Footer from '../components/Layout/Footer';
 import Header from '../components/layout/Header';
 import { Outlet } from 'react-router';
 
@@ -8,9 +9,7 @@ const MainLayout = () => {
       <section>
         <Outlet />
       </section>
-      <footer className='text-6xl'>
-        Footer Alanı
-      </footer>
+     <Footer />
     </div>
   );
 };
