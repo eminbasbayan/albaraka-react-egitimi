@@ -1,14 +1,30 @@
 import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+
+const validationSchema = yup.object().shape({
+  email: yup.string().required('Email boş geçilemez!').email(),
+  password: yup
+    .string()
+    .required('Password boş geçilemez!')
+    .min(8, 'Şifre en az 8 karakterli olmalıdır!'),
+});
 
 export default function Login() {
-  const { register, handleSubmit, watch } = useForm();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
 
   function onSubmit(data) {
     console.log(data);
   }
 
   /* console.log(watch('password')); */
-  console.log('re-render!');
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4 sm:px-6 lg:px-8 font-sans">
@@ -49,6 +65,9 @@ export default function Login() {
                 placeholder="ornek@domain.com"
                 {...register('email')}
               />
+              {errors.email && (
+                <p className="text-sm text-red-600">{errors.email.message}</p>
+              )}
             </div>
 
             {/* Şifre Alanı */}
@@ -67,6 +86,11 @@ export default function Login() {
                   placeholder="••••••••"
                   {...register('password')}
                 />
+                {errors.password && (
+                  <p className="text-sm text-red-600">
+                    {errors.password.message}
+                  </p>
+                )}
               </div>
             </div>
           </div>
