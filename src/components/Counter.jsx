@@ -1,32 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { arttir, azalt } from '../redux/counterSlice';
 
 const Counter = () => {
-  const [count, setCount] = useState(0);
-  const [title, setTitle] = useState('Emre');
+  const { count } = useSelector((state) => state.counter);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log("component DOM'a ilk kez yüklendiğinde çalışır!");
-  }, []);
-
-  useEffect(() => {
-    console.log(
-      'component DOM`a ilk kez yüklendiğinde ve deps içindeki değerler güncellendiğinde çalışır!',
-    );
-  }, [title]);
-
-  const arttir = () => setCount((prev) => prev + 1);
-  const azalt = () => setCount((prev) => prev - 1);
+  console.log(count);
+  
 
   return (
     <div>
-      <p>{title}</p>
-      <button onClick={() => setTitle('Ahmet')}>Title Değiştir!</button>
-      <br />
-      <br />
-      <br />
-      <button onClick={arttir}>Arttır</button>
+      <button onClick={() => dispatch(arttir())}>Arttır</button>
       <b>{count}</b>
-      <button onClick={azalt}>Azalt</button>
+      <button onClick={()=> dispatch(azalt())}>Azalt</button>
     </div>
   );
 };
