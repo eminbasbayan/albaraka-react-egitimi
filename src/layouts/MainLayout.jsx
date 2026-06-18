@@ -1,4 +1,4 @@
-import Header from '../components/layout/Header.jsx';
+import Header from '../components/Layout/Header.jsx';
 import Footer from '../components/Layout/Footer.jsx';
 import { Outlet } from 'react-router';
 
