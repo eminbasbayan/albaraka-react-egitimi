@@ -2,10 +2,12 @@ import { useContext } from 'react';
 import Button from '../UI/Button';
 import './ProductCard.css';
 import { CartContext } from '../../context/CartContext';
+import { useNavigate } from 'react-router';
 
 function ProductCard(props) {
   const { cartItems, addToCart, removeFromCart } = useContext(CartContext);
   const { setProducts, ...product } = props;
+  const navigate = useNavigate();
 
   function deleteProduct() {
     /*     const filteredProducts = props.products.filter(
@@ -23,7 +25,12 @@ function ProductCard(props) {
       <img className="product-image" src={props.image} />
       <div className="product-info">
         <span className="product-category">{props.category}</span>
-        <b className="product-title">{props.title}</b>
+        <b
+          className="product-title cursor-pointer hover:bg-red-300"
+          onClick={() => navigate(`/product-details/${props.id}`)}
+        >
+          {props.title}
+        </b>
         <span className="product-price">{props.price}₺</span>
         <div className="flex flex-col gap-2">
           {props.cart ? (
