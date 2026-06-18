@@ -1,12 +1,13 @@
-import { useContext } from 'react';
 import Button from '../UI/Button';
-import './ProductCard.css';
-import { CartContext } from '../../context/CartContext';
 import { useNavigate } from 'react-router';
+import { addToCart, removeFromCart } from '../../redux/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import './ProductCard.css';
 
 function ProductCard(props) {
-  const { cartItems, addToCart, removeFromCart } = useContext(CartContext);
+  const { cartItems } = useSelector((state) => state.cart);
   const { setProducts, ...product } = props;
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   function deleteProduct() {
@@ -36,7 +37,7 @@ function ProductCard(props) {
           {props.cart ? (
             <Button
               size="lg"
-              onClick={() => removeFromCart(props.id)}
+              onClick={() => dispatch(removeFromCart(props.id))}
               color="danger"
             >
               Sepetten Sil
@@ -45,7 +46,7 @@ function ProductCard(props) {
             <>
               <Button
                 size="lg"
-                onClick={() => addToCart(product)}
+                onClick={() => dispatch(addToCart(product))}
                 disabled={findCartItem}
               >
                 Sepete Ekle

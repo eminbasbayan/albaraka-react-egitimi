@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import Counter from './components/Counter';
 
 function App() {
+
   return (
     <div className="root-component">
       <Counter />

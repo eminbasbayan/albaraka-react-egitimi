@@ -3,9 +3,13 @@ import { BsFillCartPlusFill } from 'react-icons/bs';
 import React, { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 import { AuthContext } from '../../context/AuthContext';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
-  const { cartItems } = useContext(CartContext);
+  /* const { cartItems } = useContext(CartContext); */
+  const { cartItems } = useSelector((state) => state.cart);
+  console.log(cartItems);
+  
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
